@@ -80,9 +80,9 @@ function initNotifyForm() {
     const button = form.querySelector('button');
     const input = form.querySelector('input[type="email"]');
     
-    // Simple email validation - just check basic format
-    // Server-side (Web3Forms) handles spam protection
+    // Enhanced email validation with TLD checking
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const validTLDs = ['com', 'co.uk', 'uk', 'org', 'net', 'edu', 'gov', 'io', 'app', 'dev', 'me', 'us'];
 
     // Validate email format
     function validateEmail(email) {
@@ -95,6 +95,12 @@ function initNotifyForm() {
         
         // Prevent obviously malformed emails
         if (email.includes('..') || email.length > 254) {
+            return false;
+        }
+        
+        // Check for valid TLD
+        const tld = email.split('.').pop().toLowerCase();
+        if (!validTLDs.includes(tld) && tld.length < 2) {
             return false;
         }
         
@@ -168,8 +174,10 @@ function initNotifyForm() {
         
         // Disable button and show loading state
         button.disabled = true;
-        button.textContent = 'Adding...';
+        const originalButtonText = button.textContent;
+        button.innerHTML = '<span style="display: inline-block; animation: pulse 1.5s ease-in-out infinite;">⏳</span> Adding you to the list...';
         message.textContent = '';
+        input.disabled = true;
         
         try {
             // Create FormData and ensure proper formatting
@@ -187,15 +195,17 @@ function initNotifyForm() {
             const data = await response.json();
             
             if (response.ok && data.success) {
-                message.textContent = '✓ Welcome to the community! We\'ll see you on launch day.';
-                message.style.color = 'var(--text-primary)';
-                input.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                message.textContent = '🎉 Success! You\'re on the list. We\'ll email you when RecipeFinder launches!';
+                message.style.color = '#10b981';
+                message.style.fontWeight = '600';
+                input.style.borderColor = '#10b981';
                 form.reset();
                 
-                // Clear message after 6 seconds
+                // Clear message after 8 seconds
                 setTimeout(() => {
                     message.textContent = '';
-                }, 6000);
+                    input.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+                }, 8000);
             } else {
                 // Handle specific error messages
                 let errorMessage = '⚠ Oops! Something went wrong. Please try again.';
@@ -209,13 +219,16 @@ function initNotifyForm() {
             
             // Reset button
             button.disabled = false;
-            button.textContent = 'Notify Me';
+            button.textContent = originalButtonText;
+            input.disabled = false;
             
         } catch (error) {
             message.textContent = '⚠ Oops! Something went wrong. Please try again.';
             message.style.color = '#ef4444';
+            message.style.fontWeight = '600';
             button.disabled = false;
-            button.textContent = 'Notify Me';
+            button.textContent = originalButtonText;
+            input.disabled = false;
             
             console.error('Subscription error:', error);
         }
