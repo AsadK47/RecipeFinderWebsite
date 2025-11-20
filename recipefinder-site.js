@@ -172,6 +172,12 @@ function initNotifyForm() {
             return;
         }
         
+        // Set reply_to to the user's email so you can easily respond
+        const replytoInput = form.querySelector('[name="replyto"]');
+        if (replytoInput) {
+            replytoInput.value = email;
+        }
+        
         // Disable button and show loading state
         button.disabled = true;
         const originalButtonText = button.textContent;
