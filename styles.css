@@ -215,7 +215,7 @@ body {
     align-items: center;
     justify-content: center;
     min-height: calc(100vh - 60px);
-    padding: 80px 20px 60px;
+    padding: 0 20px 60px;
 }
 
 .hero-content {
