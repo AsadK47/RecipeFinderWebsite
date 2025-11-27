@@ -178,6 +178,12 @@ function initNotifyForm() {
             replytoInput.value = email;
         }
         
+        // Set message field with the email for visibility in notification
+        const messageInput = form.querySelector('[name="message"]');
+        if (messageInput) {
+            messageInput.value = `New waitlist signup!\n\nEmail: ${email}\n\nSigned up on: ${new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' })}`;
+        }
+        
         // Disable button and show loading state
         button.disabled = true;
         const originalButtonText = button.textContent;

@@ -206,6 +206,8 @@
                 <!-- Honeypot for spam protection (bots will fill this, humans won't see it) -->
                 <input type="text" name="botcheck" id="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
                 
+                <!-- Add a message field to display in email -->
+                <input type="hidden" name="message" id="messageInput">
                 <input type="email" name="email" id="emailInput" placeholder="Enter your email" required>
                 <input type="hidden" name="replyto" id="replytoInput">
                 <button type="submit">Notify Me</button>
