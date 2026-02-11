@@ -99,14 +99,14 @@ section[id] {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+    /* Fallback gradient for browsers that don't load CSS vars immediately */
     background: linear-gradient(135deg, rgb(20, 184, 166), rgb(45, 155, 180), rgb(59, 130, 246), rgb(67, 97, 238));
     background: var(--gradient-main);
     background-attachment: fixed;
-    background-size: cover;
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
-    transition: background 0.3s ease, color 0.3s ease;
+    transition: background 0.5s ease, color 0.3s ease;
     min-height: 100vh;
 }
 
@@ -660,8 +660,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    margin-top: 40px;
+    gap: 1.25rem;
+    margin: clamp(2rem, 4vh, 3.5rem) 0 clamp(1.5rem, 3vh, 2.5rem) 0;
     flex-wrap: wrap;
 }
 
@@ -669,8 +669,8 @@ body {
 .gallery-link {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 14px 28px;
+    gap: 0.625rem;
+    padding: 0.875rem 1.75rem;
     background: var(--bg-card);
     color: var(--text-primary);
     border: 2px solid var(--accent);
