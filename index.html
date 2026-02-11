@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- Immediate Theme Script (prevents flash) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+    
     <!-- Primary Meta Tags -->
     <title>RecipeFinder - Your Personal Culinary Companion</title>
     <meta name="title" content="RecipeFinder - Your Personal Culinary Companion">
@@ -65,7 +75,7 @@
     }
     </script>
     
-    <link rel="stylesheet" href="styles.css?v=0.2">
+    <link rel="stylesheet" href="styles.css?v=0.4">
 </head>
 <body>
     <!-- Coming Soon Banner -->
@@ -108,8 +118,75 @@
                     </div>
                 </div>
                 
-                <div id="features" class="features-grid">
-                    <!-- Core Recipe Features (Always visible - 1-6) -->
+                <!-- iPhone Mockups Section (3 side by side) -->
+                <div id="iphoneMockup" class="iphone-showcase">
+                    <div class="iphone-trio">
+                        <!-- iPhone 1 -->
+                        <div class="iphone-container">
+                            <div class="iphone-frame">
+                                <div class="iphone-screen">
+                                    <img src="assets/HomeScreen.png" alt="RecipeFinder App - Home Screen" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="placeholder-screen" style="display: none;">
+                                        <div class="placeholder-icon">🔍</div>
+                                        <h3>Smart Search</h3>
+                                        <p>Find recipes instantly</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="iphone-label">Home Screen</div>
+                        </div>
+                        
+                        <!-- iPhone 2 -->
+                        <div class="iphone-container">
+                            <div class="iphone-frame">
+                                <div class="iphone-screen">
+                                    <img src="assets/HeroPage.png" alt="RecipeFinder App - Recipe Details" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="placeholder-screen" style="display: none;">
+                                        <div class="placeholder-icon">📱</div>
+                                        <h3>RecipeFinder</h3>
+                                        <p>Beautiful Interface</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="iphone-label">Recipe Details</div>
+                        </div>
+                        
+                        <!-- iPhone 3 -->
+                        <div class="iphone-container">
+                            <div class="iphone-frame">
+                                <div class="iphone-screen">
+                                    <img src="assets/MealPlanner.png" alt="RecipeFinder App - Meal Planner" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="placeholder-screen" style="display: none;">
+                                        <div class="placeholder-icon">📅</div>
+                                        <h3>Meal Planning</h3>
+                                        <p>Plan your week</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="iphone-label">Meal Planner</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Button Container -->
+                    <div class="button-container">
+                        <a href="gallery.html" class="gallery-link">
+                            <span>View Full Gallery</span>
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <button id="toggleFeaturesBtn" class="show-more-btn">
+                            <span class="show-more-text">View All Features</span>
+                            <svg class="show-more-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Features Grid (hidden by default) -->
+                <div id="features" class="features-grid features-collapsed">
+                    <!-- Core Recipe Features -->
                     <div class="feature">
                         <div class="feature-icon">🔍</div>
                         <h3>Smart Recipe Discovery</h3>
@@ -145,50 +222,42 @@
                         <p>Plan your meals effortlessly</p>
                     </div>
                     
-                    <!-- Hidden features (7-12) -->
-                    <div class="feature feature-hidden">
+                    <!-- Additional Features -->
+                    <div class="feature">
                         <div class="feature-icon">❤️</div>
                         <h3>Favourites</h3>
                         <p>Favourites at your fingertips</p>
                     </div>
                     
                     <!-- Cooking Tools -->
-                    <div class="feature feature-hidden">
+                    <div class="feature">
                         <div class="feature-icon">⏱️</div>
                         <h3>Cook Timer</h3>
                         <p>Time for a change</p>
                     </div>
-                    <div class="feature feature-hidden">
+                    <div class="feature">
                         <div class="feature-icon">📝</div>
                         <h3>Recipe Notes</h3>
                         <p>Capture your culinary insights</p>
                     </div>
                     
                     <!-- App Features -->
-                    <div class="feature feature-hidden">
+                    <div class="feature">
                         <div class="feature-icon">🎨</div>
                         <h3>Personalise appearance</h3>
                         <p>Customise your cooking experience</p>
                     </div>
-                    <div class="feature feature-hidden">
+                    <div class="feature">
                         <div class="feature-icon">🔐</div>
                         <h3>FaceID Sign In (Optional)</h3>
                         <p>Safe and secure</p>
                     </div>
-                    <div class="feature feature-hidden">
+                    <div class="feature">
                         <div class="feature-icon">📡</div>
                         <h3>Offline Ready</h3>
                         <p>Cook anywhere, anytime</p>
                     </div>
-                    </div>
-                    
-                    <!-- Show More Button -->
-                    <button id="showMoreBtn" class="show-more-btn">
-                        <span class="show-more-text">Show More Features</span>
-                        <svg class="show-more-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </button>
+                </div>
                 </div>
             </div>
         </section>
@@ -228,6 +297,7 @@
                     <h4>Product</h4>
                     <ul>
                         <li><a href="#features">Features</a></li>
+                        <li><a href="gallery.html">App Gallery</a></li>
                         <li><a href="#notify">Get Notified</a></li>
                         <li><a href="mailto:recipefinderlimited@icloud.com">Business Enquiries</a></li>
                     </ul>

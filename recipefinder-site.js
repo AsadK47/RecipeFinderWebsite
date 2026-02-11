@@ -398,49 +398,122 @@ function initSmoothScroll() {
 }
 
 // ============================================
-// Show More Features
+// Toggle Features / iPhone Mockup
 // ============================================
 
 function initShowMoreFeatures() {
-    const showMoreBtn = document.getElementById('showMoreBtn');
-    const hiddenFeatures = document.querySelectorAll('.feature-hidden');
-    const showMoreText = showMoreBtn.querySelector('.show-more-text');
-    let isExpanded = false;
+    const toggleBtn = document.getElementById('toggleFeaturesBtn');
+    const featuresGrid = document.getElementById('features');
+    const toggleText = toggleBtn.querySelector('.show-more-text');
+    let showingFeatures = false;
     
-    showMoreBtn.addEventListener('click', () => {
-        isExpanded = !isExpanded;
+    toggleBtn.addEventListener('click', () => {
+        showingFeatures = !showingFeatures;
         
-        if (isExpanded) {
-            // Show features with staggered animation
-            hiddenFeatures.forEach((feature, index) => {
-                setTimeout(() => {
-                    feature.classList.add('feature-visible');
-                }, index * 100); // 100ms delay between each feature
-            });
+        if (showingFeatures) {
+            // Show features
+            featuresGrid.classList.remove('features-collapsed');
+            featuresGrid.classList.add('features-expanded');
             
             // Update button
-            showMoreBtn.classList.add('expanded');
-            showMoreText.textContent = 'Show Less';
+            toggleBtn.classList.add('expanded');
+            toggleText.textContent = 'Hide Features';
             
         } else {
             // Hide features
-            hiddenFeatures.forEach(feature => {
-                feature.classList.remove('feature-visible');
-            });
+            featuresGrid.classList.remove('features-expanded');
+            featuresGrid.classList.add('features-collapsed');
             
             // Update button
-            showMoreBtn.classList.remove('expanded');
-            showMoreText.textContent = 'Show More Features';
-            
-            // Smooth scroll to features section
-            const featuresSection = document.getElementById('features');
-            const bannerHeight = document.querySelector('.coming-soon-banner').offsetHeight;
-            const targetPosition = featuresSection.getBoundingClientRect().top + window.pageYOffset - bannerHeight - 100;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
+            toggleBtn.classList.remove('expanded');
+            toggleText.textContent = 'View All Features';
         }
     });
 }
+
+// ============================================
+// Screenshot Carousel
+// ============================================
+
+function initScreenshotCarousel() {
+    const screenImages = document.querySelectorAll('.screen-img');
+    
+    screenImages.forEach(img => {
+        const screensData = img.getAttribute('data-screens');
+        if (!screensData) return;
+        
+        try {
+            const screens = JSON.parse(screensData);
+            if (screens.length <= 1) return;
+            
+            let currentIndex = 0;
+            
+            // Auto-rotate screenshots every 4 seconds
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % screens.length;
+                
+                // Fade out
+                img.style.opacity = '0';
+                
+                setTimeout(() => {
+                    img.src = screens[currentIndex];
+                    // Fade in
+                    img.style.opacity = '1';
+                }, 300);
+                
+            }, 4000);
+            
+            // Add CSS transition for smooth fade
+            img.style.transition = 'opacity 0.3s ease-in-out';
+            
+        } catch (e) {
+            console.error('Error parsing screens data:', e);
+        }
+    });
+}
+
+// ============================================
+// Swipe Gestures for Mobile
+// ============================================
+
+function initSwipeGestures() {
+    const iphoneTrio = document.querySelector('.iphone-trio');
+    if (!iphoneTrio || window.innerWidth > 968) return;
+    
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let currentPhoneIndex = 0;
+    const phones = document.querySelectorAll('.iphone-container');
+    
+    iphoneTrio.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    iphoneTrio.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) < swipeThreshold) return;
+        
+        if (diff > 0 && currentPhoneIndex < phones.length - 1) {
+            // Swipe left - next phone
+            currentPhoneIndex++;
+        } else if (diff < 0 && currentPhoneIndex > 0) {
+            // Swipe right - previous phone
+            currentPhoneIndex--;
+        }
+        
+        // Scroll to the phone
+        phones[currentPhoneIndex].scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'nearest',
+            inline: 'center'
+        });
+    }
+}
+
