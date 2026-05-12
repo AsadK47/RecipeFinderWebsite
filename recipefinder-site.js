@@ -71,6 +71,35 @@ function updateThemeIcon(theme, iconElement) {
 }
 
 // ============================================
+// Email Validation (module-level for testability)
+// ============================================
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const validTLDs = ['com', 'co.uk', 'uk', 'org', 'net', 'edu', 'gov', 'io', 'app', 'dev', 'me', 'us'];
+
+function validateEmail(email) {
+    email = email.trim();
+
+    // Basic format check
+    if (!emailRegex.test(email)) {
+        return false;
+    }
+
+    // Prevent obviously malformed emails
+    if (email.includes('..') || email.length > 254) {
+        return false;
+    }
+
+    // Check for valid TLD
+    const tld = email.split('.').pop().toLowerCase();
+    if (!validTLDs.includes(tld) && tld.length < 2) {
+        return false;
+    }
+
+    return true;
+}
+
+// ============================================
 // Notify Form
 // ============================================
 
@@ -79,34 +108,7 @@ function initNotifyForm() {
     const message = document.getElementById('formMessage');
     const button = form.querySelector('button');
     const input = form.querySelector('input[type="email"]');
-    
-    // Enhanced email validation with TLD checking
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const validTLDs = ['com', 'co.uk', 'uk', 'org', 'net', 'edu', 'gov', 'io', 'app', 'dev', 'me', 'us'];
 
-    // Validate email format
-    function validateEmail(email) {
-        email = email.trim();
-        
-        // Basic format check
-        if (!emailRegex.test(email)) {
-            return false;
-        }
-        
-        // Prevent obviously malformed emails
-        if (email.includes('..') || email.length > 254) {
-            return false;
-        }
-        
-        // Check for valid TLD
-        const tld = email.split('.').pop().toLowerCase();
-        if (!validTLDs.includes(tld) && tld.length < 2) {
-            return false;
-        }
-        
-        return true;
-    }
-    
     // Real-time validation on input
     input.addEventListener('input', () => {
         const email = input.value.trim();
@@ -517,3 +519,11 @@ function initSwipeGestures() {
     }
 }
 
+
+// ============================================
+// Test Exports (no-op in browser)
+// ============================================
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { validateEmail, initNotifyForm };
+}
