@@ -525,5 +525,5 @@ function initSwipeGestures() {
 // ============================================
 
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { validateEmail, initNotifyForm };
+    module.exports = { validateEmail, initNotifyForm, initCookieConsent, initThemeToggle };
 }
