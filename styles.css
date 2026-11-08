@@ -1533,3 +1533,41 @@ body {
         height: 8px;
     }
 }
+
+/* Pitch: other apps' limit first, so "unlimited, free" reads as generous */
+.pitch-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    max-width: 560px;
+    margin: 8px auto 24px;
+}
+.pitch-compare > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    text-align: left;
+}
+.pitch-other {
+    background: rgba(255, 255, 255, 0.08);
+    opacity: 0.75;
+}
+.pitch-ours {
+    background: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+.pitch-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    opacity: 0.8;
+}
+.pitch-value {
+    font-weight: 600;
+    line-height: 1.3;
+}
+@media (max-width: 520px) {
+    .pitch-compare { grid-template-columns: 1fr; }
+}
