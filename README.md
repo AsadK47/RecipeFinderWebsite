@@ -92,11 +92,11 @@ Users can reject all cookies. When rejected:
 
 ## ⚖️ Legal
 
-**Asad Ullah Khan**  
+**Asad Khan**  
 
 **Contact:** recipefinderuk@gmail.com  
 **Website:** [recipefinder.uk](https://recipefinder.uk)
 
 ---
 
-© 2025 Asad Ullah Khan. All rights reserved.
+© 2025 Asad Khan. All rights reserved.
