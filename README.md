@@ -27,7 +27,6 @@ Website/
 ├── cookies.html         # Cookie policy
 ├── privacy.html         # Privacy policy
 ├── terms.html           # Terms of service
-├── legal-notice.html    # Legal notice & IP rights
 ├── styles.css           # All styling
 ├── recipefinder-site.js # Interactivity
 └── assets/              # Images & icons
@@ -91,15 +90,13 @@ Users can reject all cookies. When rejected:
 
 ---
 
-## 🏢 Legal
+## ⚖️ Legal
 
-**RECIPEFINDER LIMITED**  
-Company No. 16833243  
-Registered in England and Wales
+**Asad Ullah Khan**  
 
-**Contact:** recipefinderlimited@icloud.com  
+**Contact:** recipefinderuk@gmail.com  
 **Website:** [recipefinder.uk](https://recipefinder.uk)
 
 ---
 
-© 2025 RECIPEFINDER LIMITED. All rights reserved.
+© 2025 Asad Ullah Khan. All rights reserved.
