@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initCookieConsent();
     initSmoothScroll();
+    initFeatureTour();
 });
 
 // ============================================
@@ -482,9 +483,59 @@ function initSwipeGestures() {
 
 
 // ============================================
+// Feature Tour (tabs)
+// ============================================
+
+// Pure: which tab index a key press moves to (null = key not handled).
+function nextTabIndex(current, key, count) {
+    if (count <= 0) return null;
+    switch (key) {
+        case 'ArrowRight': case 'ArrowDown': return (current + 1) % count;
+        case 'ArrowLeft': case 'ArrowUp': return (current - 1 + count) % count;
+        case 'Home': return 0;
+        case 'End': return count - 1;
+        default: return null;
+    }
+}
+
+function initFeatureTour(root = document) {
+    const tour = root.querySelector('[data-tour]');
+    if (!tour) return;
+    const tablist = tour.querySelector('[role="tablist"]');
+    const tabs = Array.from(tour.querySelectorAll('[role="tab"]'));
+    const panels = tabs.map(tab => tour.querySelector('#' + tab.getAttribute('aria-controls')));
+    if (!tablist || !tabs.length || panels.some(p => !p)) return;
+
+    function select(index, focus) {
+        tabs.forEach((tab, i) => {
+            const on = i === index;
+            tab.setAttribute('aria-selected', on ? 'true' : 'false');
+            tab.tabIndex = on ? 0 : -1;
+            panels[i].hidden = !on;
+        });
+        if (focus) tabs[index].focus();
+    }
+
+    tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => select(i, false));
+        tab.addEventListener('keydown', (e) => {
+            const next = nextTabIndex(i, e.key, tabs.length);
+            if (next === null) return;
+            e.preventDefault();
+            select(next, true);
+        });
+    });
+    panels.forEach(panel => { panel.tabIndex = 0; });
+
+    tablist.hidden = false;
+    tour.classList.add('tour-ready');
+    select(0, false);
+}
+
+// ============================================
 // Test Exports (no-op in browser)
 // ============================================
 
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { validateEmail, initNotifyForm, initCookieConsent, initThemeToggle };
+    module.exports = { validateEmail, initNotifyForm, initCookieConsent, initThemeToggle, nextTabIndex, initFeatureTour };
 }

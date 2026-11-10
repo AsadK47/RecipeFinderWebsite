@@ -70,7 +70,7 @@
     }
     </script>
     
-    <link rel="stylesheet" href="styles.css?v=0.7">
+    <link rel="stylesheet" href="styles.css?v=0.8">
 </head>
 <body>
     <!-- What's new banner: edit the one line inside .banner-text -->
@@ -187,84 +187,72 @@
             </ol>
         </section>
 
-        <!-- Features -->
+        <!-- Feature tour: all panels show without JS; recipefinder-site.js turns them into tabs -->
         <section id="features" class="features-section" aria-labelledby="featuresHeading">
             <h2 id="featuresHeading" class="section-title">Everything in the app</h2>
-            <div class="features-grid">
-                <div class="feature">
-                    <div class="feature-icon">📥</div>
-                    <h3>Import from Anywhere</h3>
-                    <p>Links, photos, PDFs, pasted text and the share sheet</p>
+            <div class="tour" data-tour>
+                <div class="tour-tabs" role="tablist" aria-label="Feature tour" hidden>
+                    <button type="button" class="tour-tab" role="tab" id="tour-tab-save" aria-controls="tour-save">Save</button>
+                    <button type="button" class="tour-tab" role="tab" id="tour-tab-cook" aria-controls="tour-cook">Cook</button>
+                    <button type="button" class="tour-tab" role="tab" id="tour-tab-plan" aria-controls="tour-plan">Plan &amp; shop</button>
+                    <button type="button" class="tour-tab" role="tab" id="tour-tab-organise" aria-controls="tour-organise">Organise</button>
                 </div>
-                <div class="feature">
-                    <div class="feature-icon">🌐</div>
-                    <h3>Web Search</h3>
-                    <p>Find recipes on the web and save them in one tap</p>
+                <div class="tour-panel" id="tour-save" role="tabpanel" aria-labelledby="tour-tab-save">
+                    <div class="tour-copy">
+                        <h3>Save</h3>
+                        <ul>
+                            <li><strong>Import from anywhere</strong> — links, photos, PDFs, pasted text and the share sheet</li>
+                            <li><strong>Search the web</strong> and save a recipe in one tap</li>
+                            <li><strong>Bring your library</strong> from Paprika, Mela or a CSV file</li>
+                            <li><strong>Smart amounts</strong> fill in missing ingredient amounts for you to review</li>
+                        </ul>
+                    </div>
+                    <div class="tour-shot">
+                        <img src="assets/screens/05-import.jpg" alt="Import screen with options to paste a link, search the web, paste text, scan a photo or create a recipe" loading="lazy" width="660" height="1434">
+                    </div>
                 </div>
-                <div class="feature">
-                    <div class="feature-icon">📦</div>
-                    <h3>Bring Your Library</h3>
-                    <p>Move over from Paprika, Mela or a CSV file</p>
+                <div class="tour-panel" id="tour-cook" role="tabpanel" aria-labelledby="tour-tab-cook">
+                    <div class="tour-copy">
+                        <h3>Cook</h3>
+                        <ul>
+                            <li><strong>Cooking mode</strong> — big, clear steps with timers</li>
+                            <li><strong>Scale any recipe</strong> to the servings you need, in metric or imperial</li>
+                            <li><strong>Made it</strong> — ratings, photos, cook counts, streaks and badges</li>
+                            <li><strong>Siri &amp; Shortcuts</strong> — “What’s for dinner?”, hands-free</li>
+                        </ul>
+                    </div>
+                    <div class="tour-shot">
+                        <img src="assets/screens/06-cooking-mode.jpg" alt="Cooking mode listing the ingredients to gather" loading="lazy" width="660" height="1434">
+                    </div>
                 </div>
-                <div class="feature">
-                    <div class="feature-icon">✨</div>
-                    <h3>Smart Amounts</h3>
-                    <p>Fills in missing ingredient amounts for you to review</p>
+                <div class="tour-panel" id="tour-plan" role="tabpanel" aria-labelledby="tour-tab-plan">
+                    <div class="tour-copy">
+                        <h3>Plan &amp; shop</h3>
+                        <ul>
+                            <li><strong>Meal planning</strong> — plan your week and send it to your list</li>
+                            <li><strong>Shopping list</strong> sorted by aisle and by store, shareable in a tap</li>
+                            <li><strong>Add to groceries</strong> from any recipe and untick what you already have</li>
+                            <li><strong>Kitchen pantry</strong> with expiry alerts and use-it-up ideas</li>
+                        </ul>
+                    </div>
+                    <div class="tour-shot">
+                        <img src="assets/screens/03-groceries.jpg" alt="Grocery list grouped by aisle with amounts" loading="lazy" width="660" height="1434">
+                    </div>
                 </div>
-                <div class="feature">
-                    <div class="feature-icon">🔍</div>
-                    <h3>Smart Search</h3>
-                    <p>Filter by diet, time, difficulty — or what you can make now</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">📚</div>
-                    <h3>Collections</h3>
-                    <p>Your own folders plus smart collections that fill themselves</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">👩‍🍳</div>
-                    <h3>Cooking Mode</h3>
-                    <p>Step by step with timers, scaled to any number of servings</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">📅</div>
-                    <h3>Meal Planning</h3>
-                    <p>Plan your week and send it to your shopping list</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🛒</div>
-                    <h3>Shopping List</h3>
-                    <p>Sorted by aisle and by store, shareable in a tap</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🥫</div>
-                    <h3>Kitchen Pantry</h3>
-                    <p>Track what you have, get expiry alerts and use-it-up ideas</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">⭐</div>
-                    <h3>Cook History</h3>
-                    <p>Ratings, photos, cook counts, streaks and badges</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🎙️</div>
-                    <h3>Siri &amp; Shortcuts</h3>
-                    <p>“What’s for dinner?” — hands-free</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">💾</div>
-                    <h3>Backup &amp; Restore</h3>
-                    <p>Keep your whole library safe in a file you own</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🎨</div>
-                    <h3>8 Themes</h3>
-                    <p>Light, dark and eight colours to make it yours</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Private by Design</h3>
-                    <p>Your recipes live on your device and work offline</p>
+                <div class="tour-panel" id="tour-organise" role="tabpanel" aria-labelledby="tour-tab-organise">
+                    <div class="tour-copy">
+                        <h3>Organise</h3>
+                        <ul>
+                            <li><strong>Smart search</strong> by diet, time, difficulty — or what you can make now</li>
+                            <li><strong>Collections</strong> — your own folders plus smart ones that fill themselves</li>
+                            <li><strong>Backup &amp; restore</strong> your whole library to a file you own</li>
+                            <li><strong>Eight themes</strong> in light and dark to make it yours</li>
+                            <li><strong>Private by design</strong> — your recipes live on your device and work offline</li>
+                        </ul>
+                    </div>
+                    <div class="tour-shot">
+                        <img src="assets/screens/01-recipes.jpg" alt="Recipe library with photos, cooking times and difficulty" loading="lazy" width="660" height="1434">
+                    </div>
                 </div>
             </div>
         </section>
@@ -379,6 +367,6 @@
         </div>
     </div>
 
-    <script src="recipefinder-site.js?v=0.4"></script>
+    <script src="recipefinder-site.js?v=0.5"></script>
 </body>
 </html>
