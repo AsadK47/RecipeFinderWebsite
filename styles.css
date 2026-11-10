@@ -102,7 +102,10 @@ body {
     /* Fallback gradient for browsers that don't load CSS vars immediately */
     background: linear-gradient(135deg, rgb(20, 184, 166), rgb(45, 155, 180), rgb(59, 130, 246), rgb(67, 97, 238));
     background: var(--gradient-main);
-    background-attachment: fixed;
+    /* Scrolls with the page so the gradient spans the whole document
+       (fixed attachment left the hero half-painted in some renderers). */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
