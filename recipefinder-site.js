@@ -104,6 +104,7 @@ function validateEmail(email) {
 
 function initNotifyForm() {
     const form = document.getElementById('notifyForm');
+    if (!form) return; // only the home page has the sign-up form
     const message = document.getElementById('formMessage');
     const button = form.querySelector('button');
     const input = form.querySelector('input[type="email"]');
@@ -339,6 +340,7 @@ function initCookieConsent() {
     const cookieBanner = document.getElementById('cookieConsent');
     const acceptButton = document.getElementById('acceptCookies');
     const rejectButton = document.getElementById('rejectCookies');
+    if (!cookieBanner || !acceptButton || !rejectButton) return; // legal pages have no banner
     
     // Check if user has made a choice
     const cookieChoice = localStorage.getItem('cookieConsent');
