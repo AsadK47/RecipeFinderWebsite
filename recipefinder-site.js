@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initCookieConsent();
     initSmoothScroll();
-    initShowMoreFeatures();
 });
 
 // ============================================
@@ -396,40 +395,6 @@ function initSmoothScroll() {
                 });
             }
         });
-    });
-}
-
-// ============================================
-// Toggle Features / iPhone Mockup
-// ============================================
-
-function initShowMoreFeatures() {
-    const toggleBtn = document.getElementById('toggleFeaturesBtn');
-    const featuresGrid = document.getElementById('features');
-    const toggleText = toggleBtn.querySelector('.show-more-text');
-    let showingFeatures = false;
-    
-    toggleBtn.addEventListener('click', () => {
-        showingFeatures = !showingFeatures;
-        
-        if (showingFeatures) {
-            // Show features
-            featuresGrid.classList.remove('features-collapsed');
-            featuresGrid.classList.add('features-expanded');
-            
-            // Update button
-            toggleBtn.classList.add('expanded');
-            toggleText.textContent = 'Hide Features';
-            
-        } else {
-            // Hide features
-            featuresGrid.classList.remove('features-expanded');
-            featuresGrid.classList.add('features-collapsed');
-            
-            // Update button
-            toggleBtn.classList.remove('expanded');
-            toggleText.textContent = 'View All Features';
-        }
     });
 }
 
