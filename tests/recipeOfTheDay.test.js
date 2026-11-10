@@ -48,3 +48,25 @@ describe('initRecipeOfTheDay', () => {
         expect(text('[data-rotd-name]')).toBe('Fallback');
     });
 });
+
+describe('whenNearView', () => {
+    const { whenNearView } = require('../recipefinder-site.js');
+    test('waits for the element to come near, then runs once', () => {
+        let observer;
+        const win = { IntersectionObserver: class {
+            constructor(cb) { this.cb = cb; observer = this; }
+            observe() {} disconnect() { this.done = true; }
+        } };
+        const fn = jest.fn();
+        whenNearView(document.createElement('div'), fn, win);
+        expect(fn).not.toHaveBeenCalled();
+        observer.cb([{ isIntersecting: true }]);
+        expect(fn).toHaveBeenCalledTimes(1);
+        expect(observer.done).toBe(true);
+    });
+    test('runs straight away without IntersectionObserver', () => {
+        const fn = jest.fn();
+        whenNearView(document.createElement('div'), fn, {});
+        expect(fn).toHaveBeenCalledTimes(1);
+    });
+});

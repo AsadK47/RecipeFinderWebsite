@@ -48,8 +48,8 @@
     <meta property="twitter:image:alt" content="RecipeFinder - Your Personal Culinary Companion">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/app-icon.png">
-    <link rel="apple-touch-icon" href="assets/app-icon.png">
+    <link rel="icon" type="image/png" href="assets/app-icon-256.png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#14B8A6">
     
@@ -70,13 +70,13 @@
     }
     </script>
     
-    <link rel="stylesheet" href="styles.css?v=1.1">
+    <link rel="stylesheet" href="styles.css?v=1.2">
 </head>
 <body>
     <!-- What's new banner: edit the one line inside .banner-text -->
     <div class="coming-soon-banner">
         <div class="banner-content">
-            <a class="banner-text banner-link" href="#features"><span class="banner-new">New</span> Import from PDFs and other apps</a>
+            <a class="banner-text banner-link" href="whats-new.html"><span class="banner-new">New</span> Import from PDFs and other apps</a>
         </div>
         <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <span class="theme-icon">🌙</span>
@@ -92,7 +92,7 @@
                 <div class="logo-container">
                     <div class="logo-glow"></div>
                     <div class="logo">
-                        <img src="assets/app-icon.png" alt="RecipeFinder App Icon" />
+                        <img src="assets/app-icon-256.png" alt="RecipeFinder App Icon" width="256" height="256" />
                     </div>
                 </div>
 
@@ -119,7 +119,7 @@
                         <div class="iphone-container">
                             <div class="iphone-frame">
                                 <div class="iphone-screen">
-                                    <img src="assets/screens/01-recipes.jpg" alt="RecipeFinder: Your library" loading="lazy" width="660" height="1434">
+                                    <img src="assets/screens/01-recipes.webp" alt="RecipeFinder: Your library" loading="lazy" width="660" height="1434">
                                 </div>
                             </div>
                             <div class="iphone-label">Your library</div>
@@ -127,7 +127,7 @@
                         <div class="iphone-container">
                             <div class="iphone-frame">
                                 <div class="iphone-screen">
-                                    <img src="assets/screens/02-recipe.jpg" alt="RecipeFinder: Recipe" loading="lazy" width="660" height="1434">
+                                    <img src="assets/screens/02-recipe.webp" alt="RecipeFinder: Recipe" loading="lazy" width="660" height="1434">
                                 </div>
                             </div>
                             <div class="iphone-label">Recipe</div>
@@ -135,7 +135,7 @@
                         <div class="iphone-container">
                             <div class="iphone-frame">
                                 <div class="iphone-screen">
-                                    <img src="assets/screens/06-cooking-mode.jpg" alt="RecipeFinder: Cooking mode" loading="lazy" width="660" height="1434">
+                                    <img src="assets/screens/06-cooking-mode.webp" alt="RecipeFinder: Cooking mode" loading="lazy" width="660" height="1434">
                                 </div>
                             </div>
                             <div class="iphone-label">Cooking mode</div>
@@ -162,7 +162,7 @@
             <ol class="steps">
                 <li class="step">
                     <div class="step-shot">
-                        <img src="assets/screens/05-import.jpg" alt="Importing a recipe from a link in RecipeFinder" loading="lazy" width="660" height="1434">
+                        <img src="assets/screens/05-import.webp" alt="Importing a recipe from a link in RecipeFinder" loading="lazy" width="660" height="1434">
                     </div>
                     <span class="step-num" aria-hidden="true">1</span>
                     <h3>Save from anywhere</h3>
@@ -170,7 +170,7 @@
                 </li>
                 <li class="step">
                     <div class="step-shot">
-                        <img src="assets/screens/06-cooking-mode.jpg" alt="Cooking mode showing ingredients to gather" loading="lazy" width="660" height="1434">
+                        <img src="assets/screens/06-cooking-mode.webp" alt="Cooking mode showing ingredients to gather" loading="lazy" width="660" height="1434">
                     </div>
                     <span class="step-num" aria-hidden="true">2</span>
                     <h3>Cook step by step</h3>
@@ -178,7 +178,7 @@
                 </li>
                 <li class="step">
                     <div class="step-shot">
-                        <img src="assets/screens/04-meal-plan.jpg" alt="Weekly meal plan in RecipeFinder" loading="lazy" width="660" height="1434">
+                        <img src="assets/screens/04-meal-plan.webp" alt="Weekly meal plan in RecipeFinder" loading="lazy" width="660" height="1434">
                     </div>
                     <span class="step-num" aria-hidden="true">3</span>
                     <h3>Plan &amp; shop</h3>
@@ -189,6 +189,8 @@
 
         <!-- A week with RecipeFinder + Recipe of the day -->
         <section id="week" class="week-section" aria-labelledby="weekHeading">
+            <span class="doodle doodle-a" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M40 20 12 54c-2 2 0 4 2 2l34-28c4-4 0-12-8-8z"/><path d="M42 22c2-8 8-12 14-12M44 24c6-2 12 0 14 4M40 20c0-6 2-12 8-14"/><path d="M28 34l4 4M22 42l3 3"/></svg></span>
+            <span class="doodle doodle-b" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M36 30 54 56"/><path d="M36 30c-10-6-22-18-20-24 4-4 18 6 24 16 4 6 0 10-4 8z"/><path d="M38 28C32 18 24 8 20 8"/></svg></span>
             <h2 id="weekHeading" class="section-title">A week with RecipeFinder</h2>
             <ol class="week">
                 <li class="week-beat">
@@ -198,7 +200,7 @@
                         <p>Spot a recipe you love? Paste the link and it lands in your library, ready to cook.</p>
                     </div>
                     <div class="week-shot">
-                        <img src="assets/screens/05-import.jpg" alt="Import screen with ways to save a recipe" loading="lazy" width="660" height="1434">
+                        <img src="assets/screens/05-import.webp" alt="Import screen with ways to save a recipe" loading="lazy" width="660" height="1434">
                     </div>
                 </li>
                 <li class="week-beat">
@@ -208,7 +210,7 @@
                         <p>Pick a recipe for each night in the meal planner and see the whole week at a glance.</p>
                     </div>
                     <div class="week-shot">
-                        <img src="assets/screens/04-meal-plan.jpg" alt="Meal planner with the week’s calendar" loading="lazy" width="660" height="1434">
+                        <img src="assets/screens/04-meal-plan.webp" alt="Meal planner with the week’s calendar" loading="lazy" width="660" height="1434">
                     </div>
                 </li>
                 <li class="week-beat">
@@ -218,7 +220,7 @@
                         <p>Send the plan to your shopping list, sorted by aisle so the shop goes quickly.</p>
                     </div>
                     <div class="week-shot">
-                        <img src="assets/screens/03-groceries.jpg" alt="Grocery list grouped by aisle" loading="lazy" width="660" height="1434">
+                        <img src="assets/screens/03-groceries.webp" alt="Grocery list grouped by aisle" loading="lazy" width="660" height="1434">
                     </div>
                 </li>
                 <li class="week-beat">
@@ -228,7 +230,7 @@
                         <p>Adding a recipe to groceries? Untick anything already in the cupboard.</p>
                     </div>
                     <div class="week-shot">
-                        <img src="assets/screens/07-add-to-groceries.jpg" alt="Add to Groceries sheet with ingredients ticked" loading="lazy" width="660" height="1434">
+                        <img src="assets/screens/07-add-to-groceries.webp" alt="Add to Groceries sheet with ingredients ticked" loading="lazy" width="660" height="1434">
                     </div>
                 </li>
                 <li class="week-beat">
@@ -238,7 +240,7 @@
                         <p>Big, clear steps and timers keep you on track while your hands are busy.</p>
                     </div>
                     <div class="week-shot">
-                        <img src="assets/screens/06-cooking-mode.jpg" alt="Cooking mode with ingredients to gather" loading="lazy" width="660" height="1434">
+                        <img src="assets/screens/06-cooking-mode.webp" alt="Cooking mode with ingredients to gather" loading="lazy" width="660" height="1434">
                     </div>
                 </li>
                 <li class="week-beat">
@@ -248,7 +250,7 @@
                         <p>Rate it, add a photo and watch your cook count, streak and badges grow.</p>
                     </div>
                     <div class="week-shot">
-                        <img src="assets/screens/02-recipe.jpg" alt="Recipe screen with the Made it button" loading="lazy" width="660" height="1434">
+                        <img src="assets/screens/02-recipe.webp" alt="Recipe screen with the Made it button" loading="lazy" width="660" height="1434">
                     </div>
                 </li>
                 <li class="week-beat">
@@ -258,7 +260,7 @@
                         <p>Search the web for tomorrow’s idea and save the one that catches your eye.</p>
                     </div>
                     <div class="week-shot">
-                        <img src="assets/screens/13-web-search.jpg" alt="Search the web screen ready for a dish name" loading="lazy" width="660" height="1434">
+                        <img src="assets/screens/13-web-search.webp" alt="Search the web screen ready for a dish name" loading="lazy" width="660" height="1434">
                     </div>
                 </li>
             </ol>
@@ -296,7 +298,7 @@
                         </ul>
                     </div>
                     <div class="tour-shot">
-                        <img src="assets/screens/05-import.jpg" alt="Import screen with options to paste a link, search the web, paste text, scan a photo or create a recipe" loading="lazy" width="660" height="1434">
+                        <img src="assets/screens/05-import.webp" alt="Import screen with options to paste a link, search the web, paste text, scan a photo or create a recipe" loading="lazy" width="660" height="1434">
                     </div>
                 </div>
                 <div class="tour-panel" id="tour-cook" role="tabpanel" aria-labelledby="tour-tab-cook">
@@ -310,7 +312,7 @@
                         </ul>
                     </div>
                     <div class="tour-shot">
-                        <img src="assets/screens/06-cooking-mode.jpg" alt="Cooking mode listing the ingredients to gather" loading="lazy" width="660" height="1434">
+                        <img src="assets/screens/06-cooking-mode.webp" alt="Cooking mode listing the ingredients to gather" loading="lazy" width="660" height="1434">
                     </div>
                 </div>
                 <div class="tour-panel" id="tour-plan" role="tabpanel" aria-labelledby="tour-tab-plan">
@@ -324,7 +326,7 @@
                         </ul>
                     </div>
                     <div class="tour-shot">
-                        <img src="assets/screens/03-groceries.jpg" alt="Grocery list grouped by aisle with amounts" loading="lazy" width="660" height="1434">
+                        <img src="assets/screens/03-groceries.webp" alt="Grocery list grouped by aisle with amounts" loading="lazy" width="660" height="1434">
                     </div>
                 </div>
                 <div class="tour-panel" id="tour-organise" role="tabpanel" aria-labelledby="tour-tab-organise">
@@ -339,7 +341,7 @@
                         </ul>
                     </div>
                     <div class="tour-shot">
-                        <img src="assets/screens/01-recipes.jpg" alt="Recipe library with photos, cooking times and difficulty" loading="lazy" width="660" height="1434">
+                        <img src="assets/screens/01-recipes.webp" alt="Recipe library with photos, cooking times and difficulty" loading="lazy" width="660" height="1434">
                     </div>
                 </div>
             </div>
@@ -347,6 +349,8 @@
 
         <!-- FAQ -->
         <section id="faq" class="faq-section" aria-labelledby="faqHeading">
+            <span class="doodle doodle-b" aria-hidden="true"><svg viewBox="0 0 64 64"><ellipse cx="32" cy="36" rx="20" ry="15" transform="rotate(-25 32 36)"/><path d="M47 22c2-6 7-9 13-9-1 6-5 10-11 11"/><path d="M24 34c4-4 10-6 16-4"/></svg></span>
+            <span class="doodle doodle-a" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M40 20 12 54c-2 2 0 4 2 2l34-28c4-4 0-12-8-8z"/><path d="M42 22c2-8 8-12 14-12M44 24c6-2 12 0 14 4M40 20c0-6 2-12 8-14"/><path d="M28 34l4 4M22 42l3 3"/></svg></span>
             <h2 id="faqHeading" class="section-title">Questions, answered</h2>
             <div class="faq-list">
                 <details class="faq-item">
@@ -402,23 +406,24 @@
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>RecipeFinder™</h4>
+                    <h3>RecipeFinder™</h3>
                     <p>Your personal culinary companion</p>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Product</h4>
+                    <h3>Product</h3>
                     <ul>
                         <li><a href="#features">Features</a></li>
                         <li><a href="gallery.html">App Gallery</a></li>
                         <li><a href="#how-it-works">How it works</a></li>
                         <li><a href="#faq">FAQ</a></li>
                         <li><a href="#notify">Get Notified</a></li>
+                        <li><a href="whats-new.html">What’s new</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Legal</h4>
+                    <h3>Legal</h3>
                     <ul>
                         <li><a href="privacy.html">Privacy Policy</a></li>
                         <li><a href="terms.html">Terms of Service</a></li>
@@ -427,7 +432,7 @@
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Contact</h4>
+                    <h3>Contact</h3>
                     <ul>
                         <li><a href="mailto:recipefinderuk@gmail.com">Email</a></li>
                         <li><a href="mailto:recipefinderuk@gmail.com?subject=Business%20enquiry">Business Enquiries</a></li>
@@ -450,11 +455,11 @@
             <div class="cookie-buttons">
                 <button id="acceptCookies" class="btn-accept">Accept</button>
                 <button id="rejectCookies" class="btn-reject">Reject</button>
-                <a href="cookies.html">Learn More</a>
+                <a href="cookies.html">About cookies</a>
             </div>
         </div>
     </div>
 
-    <script src="recipefinder-site.js?v=0.8"></script>
+    <script src="recipefinder-site.js?v=0.9"></script>
 </body>
 </html>

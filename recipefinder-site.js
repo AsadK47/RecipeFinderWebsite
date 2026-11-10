@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCookieConsent();
     initSmoothScroll();
     initFeatureTour();
-    initRecipeOfTheDay();
+    whenNearView(document.querySelector('[data-rotd]'), () => initRecipeOfTheDay());
 });
 
 // ============================================
@@ -216,6 +216,7 @@ function initNotifyForm() {
                 message.style.fontWeight = '600';
                 input.style.borderColor = '#10b981';
                 form.reset();
+                launchConfetti();
                 
                 // Clear message after 8 seconds
                 setTimeout(() => {
@@ -537,6 +538,16 @@ function initFeatureTour(root = document) {
 // Recipe of the day
 // ============================================
 
+// Run fn once el is close to the viewport (straight away without IntersectionObserver).
+function whenNearView(el, fn, win = window) {
+    if (!el) return;
+    if (!('IntersectionObserver' in win)) { fn(); return; }
+    const io = new win.IntersectionObserver((entries) => {
+        if (entries.some(e => e.isIntersecting)) { io.disconnect(); fn(); }
+    }, { rootMargin: '600px 0px' });
+    io.observe(el);
+}
+
 // Same recipe all day (local date), next one tomorrow.
 function dayNumber(date) {
     return Math.floor(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 86400000);
@@ -573,10 +584,36 @@ function initRecipeOfTheDay(root = document, fetchFn = (typeof fetch === 'functi
 }
 
 // ============================================
+// Confetti (notify sign-up)
+// ============================================
+
+const CONFETTI_COLOURS = ['#14b8a6', '#3b82f6', '#f59e0b', '#ef4444', '#a855f7', '#22c55e', '#ffffff'];
+
+// Returns how many pieces it launched (0 with reduced motion).
+function launchConfetti(root = document, win = window, count = 60) {
+    if (win.matchMedia && win.matchMedia('(prefers-reduced-motion: reduce)').matches) return 0;
+    const layer = root.createElement('div');
+    layer.className = 'confetti';
+    layer.setAttribute('aria-hidden', 'true');
+    for (let i = 0; i < count; i++) {
+        const piece = root.createElement('i');
+        piece.style.left = `${Math.random() * 100}%`;
+        piece.style.background = CONFETTI_COLOURS[i % CONFETTI_COLOURS.length];
+        piece.style.setProperty('--dx', `${(Math.random() - 0.5) * 200}px`);
+        piece.style.setProperty('--spin', `${Math.round(360 + Math.random() * 720)}deg`);
+        piece.style.animationDelay = `${Math.random() * 0.4}s`;
+        layer.appendChild(piece);
+    }
+    root.body.appendChild(layer);
+    win.setTimeout(() => layer.remove(), 2600);
+    return count;
+}
+
+// ============================================
 // Test Exports (no-op in browser)
 // ============================================
 
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { validateEmail, initNotifyForm, initCookieConsent, initThemeToggle, nextTabIndex, initFeatureTour,
-        dayNumber, recipeOfTheDay, formatMinutes, initRecipeOfTheDay };
+        dayNumber, recipeOfTheDay, formatMinutes, initRecipeOfTheDay, whenNearView, launchConfetti };
 }
