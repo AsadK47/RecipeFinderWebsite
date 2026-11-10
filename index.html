@@ -70,13 +70,13 @@
     }
     </script>
     
-    <link rel="stylesheet" href="styles.css?v=0.6">
+    <link rel="stylesheet" href="styles.css?v=0.7">
 </head>
 <body>
-    <!-- Coming Soon Banner -->
+    <!-- What's new banner: edit the one line inside .banner-text -->
     <div class="coming-soon-banner">
         <div class="banner-content">
-            <span class="banner-text">Discover your inner chef 🌟</span>
+            <a class="banner-text banner-link" href="#features"><span class="banner-new">New</span> Import from PDFs and other apps</a>
         </div>
         <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
             <span class="theme-icon">🌙</span>
@@ -269,6 +269,37 @@
             </div>
         </section>
 
+        <!-- FAQ -->
+        <section id="faq" class="faq-section" aria-labelledby="faqHeading">
+            <h2 id="faqHeading" class="section-title">Questions, answered</h2>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>Is it free?</summary>
+                    <p>Yes. RecipeFinder is free to download, and you can save as many recipes as you like.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Does it work on iPhone and iPad?</summary>
+                    <p>Yes, RecipeFinder runs on both iPhone and iPad, with layouts made for each screen.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Can I bring my recipes from Paprika, Mela or a spreadsheet?</summary>
+                    <p>Yes. Export from Paprika or Mela, or save a CSV file, then open Settings → Data Management → Import from Another App. Your recipes come across with their photos, and anything already in your library is skipped.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Where are my recipes kept?</summary>
+                    <p>On your device. Your recipes, meal plans and shopping lists stay with you, and you can save a full backup to a file you own whenever you like. Read more in the <a href="privacy.html">Privacy Policy</a>.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Does it work offline?</summary>
+                    <p>Yes. Your library, meal plan, shopping list and cooking mode all work without a connection. Saving a recipe from a link or searching the web uses the internet while you do it.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>How do I get it? Is there a beta?</summary>
+                    <p>RecipeFinder is coming soon to the App Store, and a public beta is on the way. <a href="#notify">Leave your email</a> and we’ll let you know the moment you can try it.</p>
+                </details>
+            </div>
+        </section>
+
         <!-- Notify Section -->
         <section id="notify" class="notify-section">
             <h2>Get notified when RecipeFinder launches</h2>
@@ -305,6 +336,7 @@
                         <li><a href="#features">Features</a></li>
                         <li><a href="gallery.html">App Gallery</a></li>
                         <li><a href="#how-it-works">How it works</a></li>
+                        <li><a href="#faq">FAQ</a></li>
                         <li><a href="#notify">Get Notified</a></li>
                     </ul>
                 </div>
