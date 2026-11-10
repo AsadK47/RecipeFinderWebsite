@@ -2287,3 +2287,299 @@ body {
     text-decoration: none;
     box-shadow: 0 6px 18px var(--shadow);
 }
+
+/* ============================================
+   App look (RecipeFinder/DesignSystem.md): frosted translucent cards
+   over the theme gradient, 0.5px hairlines, capsule buttons, tinted
+   circular icon badges. Scoped to the home + what's-new classes.
+   ============================================ */
+
+:root {
+    --glass-fill: rgba(255, 255, 255, 0.30);
+    --glass-fill-strong: rgba(255, 255, 255, 0.42);
+    --glass-border: rgba(255, 255, 255, 0.55);
+    --glass-shadow: 0 8px 28px rgba(0, 40, 60, 0.14);
+    --subtle-fill: rgba(0, 0, 0, 0.06);
+    --subtle-stroke: rgba(0, 0, 0, 0.12);
+    --accent-fill: #0f766e;            /* PrimaryButton fill; white text ≥ 4.5:1 */
+    --badge-tint: #0f766e;
+    --badge-bg: rgba(255, 255, 255, 0.55);
+    --radius-card: 20px;
+    --radius-field: 12px;
+}
+
+:root[data-theme="dark"] {
+    --glass-fill: rgba(20, 22, 28, 0.34);
+    --glass-fill-strong: rgba(20, 22, 28, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.16);
+    --glass-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+    --subtle-fill: rgba(255, 255, 255, 0.15);
+    --subtle-stroke: rgba(255, 255, 255, 0.3);
+    --accent-fill: #0f766e;
+    --badge-tint: #5eead4;
+    --badge-bg: rgba(94, 234, 212, 0.15);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --glass-fill: rgba(20, 22, 28, 0.34);
+        --glass-fill-strong: rgba(20, 22, 28, 0.5);
+        --glass-border: rgba(255, 255, 255, 0.16);
+        --glass-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+        --subtle-fill: rgba(255, 255, 255, 0.15);
+        --subtle-stroke: rgba(255, 255, 255, 0.3);
+        --badge-tint: #5eead4;
+        --badge-bg: rgba(94, 234, 212, 0.15);
+    }
+}
+
+/* .appCard() */
+.pitch-ours,
+.tour-panel,
+.faq-item,
+.week-copy,
+.rotd,
+.wn-week,
+.step-shot + .step-num,
+.notify-form input {
+    background: var(--glass-fill);
+    border: 0.5px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    backdrop-filter: blur(22px) saturate(160%);
+}
+
+.tour-panel,
+.faq-item,
+.week-copy,
+.rotd,
+.wn-week {
+    border-radius: var(--radius-card);
+}
+
+.pitch-ours {
+    border-radius: var(--radius-card);
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 10px !important;
+}
+
+.pitch-ours .pitch-label {
+    flex: 1;
+}
+
+.pitch-ours .pitch-value {
+    flex-basis: 100%;
+}
+
+/* IconBadge(.tinted) */
+.icon-badge {
+    flex-shrink: 0;
+    display: inline-grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--badge-bg);
+    color: var(--badge-tint);
+}
+
+.icon-badge svg {
+    width: 18px;
+    height: 18px;
+}
+
+.icon-badge-sm {
+    width: 26px;
+    height: 26px;
+}
+
+.icon-badge-sm svg {
+    width: 15px;
+    height: 15px;
+}
+
+/* tour list: badge + text */
+.tour-copy li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding-left: 0;
+}
+
+.tour-copy li::before {
+    content: none;
+}
+
+.tour-copy li > span:last-child {
+    padding-top: 4px;
+}
+
+/* segmented control */
+.tour-tabs {
+    background: var(--subtle-fill);
+    border: 0.5px solid var(--glass-border);
+    box-shadow: none;
+    -webkit-backdrop-filter: blur(22px);
+    backdrop-filter: blur(22px);
+}
+
+.tour-tab[aria-selected="true"] {
+    background: var(--glass-fill-strong);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.tour-tab:hover {
+    background: var(--subtle-fill);
+}
+
+/* FAQ: chevron in a tinted badge */
+.faq-item summary::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    background: var(--badge-bg);
+    -webkit-mask: none;
+    border-radius: 50%;
+}
+
+.faq-item summary {
+    position: relative;
+}
+
+.faq-item summary::before {
+    content: "";
+    position: absolute;
+    right: 29px;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+    background: var(--badge-tint);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center / contain no-repeat;
+    transition: transform 0.25s ease;
+}
+
+.faq-item[open] summary::after {
+    transform: none;
+}
+
+.faq-item[open] summary::before {
+    transform: rotate(180deg);
+}
+
+/* timeline day = IconBadge(.solid) */
+.week-day {
+    background: var(--accent-fill);
+    color: #ffffff;
+    border: 0.5px solid rgba(255, 255, 255, 0.35);
+}
+
+.week::before {
+    background: var(--glass-border);
+}
+
+/* step number badge */
+.step-num {
+    background: var(--accent-fill);
+    color: #ffffff;
+}
+
+/* RotD */
+.rotd-badge {
+    background: var(--accent-fill);
+}
+
+.rotd-meta > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* .appInputField() + PrimaryButton */
+.notify-form input {
+    border-radius: var(--radius-field);
+    box-shadow: none;
+}
+
+.notify-form input:focus {
+    border-color: var(--badge-tint);
+    box-shadow: 0 0 0 3px var(--badge-bg);
+    transform: none;
+}
+
+.notify-form button,
+.wn-cta a {
+    border-radius: 999px;
+    background: var(--accent-fill);
+    color: #ffffff;
+    font-weight: 700;
+    border: none;
+    box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35);
+}
+
+/* PrimaryButton(.secondary) */
+.gallery-link {
+    border-radius: 999px;
+    background: var(--glass-fill);
+    border: 0.5px solid var(--glass-border);
+    color: var(--text-primary);
+    -webkit-backdrop-filter: blur(22px);
+    backdrop-filter: blur(22px);
+    box-shadow: var(--glass-shadow);
+}
+
+/* platform pill */
+.platform-item {
+    background: var(--glass-fill) !important;
+    border: 0.5px solid var(--glass-border) !important;
+    -webkit-backdrop-filter: blur(22px);
+    backdrop-filter: blur(22px);
+}
+
+.platform-logo {
+    display: inline-grid;
+    place-items: center;
+    color: var(--text-primary);
+}
+
+.platform-logo svg {
+    width: 20px;
+    height: 20px;
+}
+
+.platform-item.coming-soon .platform-status {
+    background: var(--accent-fill);
+}
+
+/* theme toggle: moon / sun glyph instead of emoji */
+.icon-toggle .theme-icon {
+    font-size: 0;
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+:root[data-theme="dark"] .icon-toggle .theme-icon {
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='4.5' fill='black'/%3E%3Cpath d='M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='4.5' fill='black'/%3E%3Cpath d='M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4'/%3E%3C/svg%3E");
+}
+
+.icon-toggle {
+    border: 0.5px solid rgba(255, 255, 255, 0.3);
+}
+
+/* what's-new date chip */
+.wn-list time {
+    background: var(--subtle-fill);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .faq-item summary::before {
+        transition: none;
+    }
+}
