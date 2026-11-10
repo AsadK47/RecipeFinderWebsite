@@ -12,8 +12,8 @@ A beautiful, modern landing page for the RecipeFinder iOS app. Clean design, smo
 - 📱 **Fully responsive** - looks perfect on any device
 - 🎭 **Smooth animations** - fade-ins, floating elements, and micro-interactions
 - 📧 **Email signup** for launch notifications
-- � **Cookie consent** with Accept/Reject options (GDPR-ready)
-- � **Legal pages** - Privacy, Terms, Cookies, and Legal Notice
+- 🍪 **Cookie consent** with Accept/Reject options (GDPR-ready)
+- ⚖️ **Legal pages** - Privacy, Terms and Cookies
 - ⚡ **Lightning fast** - no frameworks, pure HTML/CSS/JS
 - 🌓 **Light/Dark themes** with smooth transitions
 
@@ -22,14 +22,16 @@ A beautiful, modern landing page for the RecipeFinder iOS app. Clean design, smo
 ## 📁 Structure
 
 ```
-Website/
+./
 ├── index.html           # Main landing page
+├── gallery.html         # App screenshot gallery
 ├── cookies.html         # Cookie policy
 ├── privacy.html         # Privacy policy
 ├── terms.html           # Terms of service
 ├── styles.css           # All styling
 ├── recipefinder-site.js # Interactivity
-└── assets/              # Images & icons
+├── assets/              # Images, icons & app screenshots
+└── tests/               # Jest unit tests (npm test)
 ```
 
 ---
@@ -44,7 +46,7 @@ open index.html
 
 **Deploy:**
 ```bash
-git add Website/
+git add -A
 git commit -m "Update website"
 git push origin main
 ```
@@ -99,4 +101,4 @@ Users can reject all cookies. When rejected:
 
 ---
 
-© 2025 Asad Khan. All rights reserved.
+© 2024-2026 Asad Khan. All rights reserved.
