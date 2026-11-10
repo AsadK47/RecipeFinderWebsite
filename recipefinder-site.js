@@ -253,33 +253,27 @@ function initNotifyForm() {
 // ============================================
 
 function initScrollAnimations() {
+    // Progressive enhancement: content is visible by default (no JS, no
+    // IntersectionObserver, or reduced motion). Only when we can animate do
+    // we opt in via .reveal-ready, and anything already on screen shows at once.
+    const targets = document.querySelectorAll('.feature, .step, .notify-section');
+    if (!targets.length || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
             }
         });
-    }, {
-        threshold: 0.1
-    });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
 
-    // Observe features
-    document.querySelectorAll('.feature').forEach(feature => {
-        feature.style.opacity = '0';
-        feature.style.transform = 'translateY(20px)';
-        feature.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(feature);
+    targets.forEach(el => {
+        el.classList.add('reveal');
+        observer.observe(el);
     });
-
-    // Observe notify section
-    const notifySection = document.querySelector('.notify-section');
-    if (notifySection) {
-        notifySection.style.opacity = '0';
-        notifySection.style.transform = 'translateY(20px)';
-        notifySection.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-        observer.observe(notifySection);
-    }
+    document.documentElement.classList.add('reveal-ready');
 }
 
 // ============================================
