@@ -1896,3 +1896,192 @@ body {
 .tour-shot {
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.14);
 }
+
+/* ============================================
+   A week with RecipeFinder + Recipe of the day
+   ============================================ */
+
+.week-section {
+    padding: clamp(40px, 8vh, 80px) 20px 0;
+}
+
+.week {
+    list-style: none;
+    position: relative;
+    max-width: 860px;
+    margin: 0 auto;
+    display: grid;
+    gap: 28px;
+}
+
+/* the timeline */
+.week::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 50%;
+    width: 3px;
+    margin-left: -1.5px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.week-beat {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 64px 1fr;
+    align-items: center;
+}
+
+.week-day {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-weight: 800;
+    box-shadow: 0 6px 18px var(--shadow);
+}
+
+.week-copy {
+    grid-column: 1;
+    grid-row: 1;
+    padding: 18px 22px;
+    border-radius: 20px;
+    background: var(--bg-card);
+    box-shadow: 0 10px 30px var(--shadow);
+    text-align: right;
+}
+
+.week-shot {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: start;
+    width: 150px;
+    padding: 6px;
+    border-radius: 26px;
+    background: #1a1a1a;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+.week-beat:nth-child(even) .week-copy {
+    grid-column: 3;
+    text-align: left;
+}
+
+.week-beat:nth-child(even) .week-shot {
+    grid-column: 1;
+    justify-self: end;
+}
+
+.week-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.week-copy h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.week-copy p {
+    color: var(--text-secondary);
+}
+
+.rotd {
+    max-width: 560px;
+    margin: clamp(40px, 7vh, 64px) auto 0;
+    padding: 24px;
+    border-radius: 24px;
+    background: var(--bg-card);
+    box-shadow: 0 16px 40px var(--shadow);
+    text-align: center;
+}
+
+.rotd-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--gradient-main);
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.rotd-name {
+    margin: 12px 0 8px;
+    font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--text-primary);
+}
+
+.rotd-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 18px;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.rotd-note {
+    margin-top: 12px;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+}
+
+@media (max-width: 680px) {
+    .week::before {
+        left: 28px;
+    }
+
+    .week-beat,
+    .week-beat:nth-child(even) {
+        grid-template-columns: 56px 1fr;
+        column-gap: 14px;
+        row-gap: 12px;
+        align-items: start;
+    }
+
+    .week-day {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        align-self: start;
+    }
+
+    .week-beat .week-copy,
+    .week-beat:nth-child(even) .week-copy {
+        grid-column: 2;
+        grid-row: 1;
+        text-align: left;
+        padding: 14px 16px;
+    }
+
+    .week-beat .week-shot,
+    .week-beat:nth-child(even) .week-shot {
+        grid-column: 2;
+        grid-row: 2;
+        justify-self: start;
+        width: 130px;
+    }
+}
+
+@media (max-width: 480px) {
+    .week-section {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+}

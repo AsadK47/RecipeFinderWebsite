@@ -70,7 +70,7 @@
     }
     </script>
     
-    <link rel="stylesheet" href="styles.css?v=0.8">
+    <link rel="stylesheet" href="styles.css?v=1.1">
 </head>
 <body>
     <!-- What's new banner: edit the one line inside .banner-text -->
@@ -185,6 +185,94 @@
                     <p>Plan your week and turn it into a shopping list sorted by aisle and store.</p>
                 </li>
             </ol>
+        </section>
+
+        <!-- A week with RecipeFinder + Recipe of the day -->
+        <section id="week" class="week-section" aria-labelledby="weekHeading">
+            <h2 id="weekHeading" class="section-title">A week with RecipeFinder</h2>
+            <ol class="week">
+                <li class="week-beat">
+                    <span class="week-day">Sun</span>
+                    <div class="week-copy">
+                        <h3>Save from a link</h3>
+                        <p>Spot a recipe you love? Paste the link and it lands in your library, ready to cook.</p>
+                    </div>
+                    <div class="week-shot">
+                        <img src="assets/screens/05-import.jpg" alt="Import screen with ways to save a recipe" loading="lazy" width="660" height="1434">
+                    </div>
+                </li>
+                <li class="week-beat">
+                    <span class="week-day">Mon</span>
+                    <div class="week-copy">
+                        <h3>Plan the week</h3>
+                        <p>Pick a recipe for each night in the meal planner and see the whole week at a glance.</p>
+                    </div>
+                    <div class="week-shot">
+                        <img src="assets/screens/04-meal-plan.jpg" alt="Meal planner with the week’s calendar" loading="lazy" width="660" height="1434">
+                    </div>
+                </li>
+                <li class="week-beat">
+                    <span class="week-day">Tue</span>
+                    <div class="week-copy">
+                        <h3>Shop by store</h3>
+                        <p>Send the plan to your shopping list, sorted by aisle so the shop goes quickly.</p>
+                    </div>
+                    <div class="week-shot">
+                        <img src="assets/screens/03-groceries.jpg" alt="Grocery list grouped by aisle" loading="lazy" width="660" height="1434">
+                    </div>
+                </li>
+                <li class="week-beat">
+                    <span class="week-day">Wed</span>
+                    <div class="week-copy">
+                        <h3>Use what you have</h3>
+                        <p>Adding a recipe to groceries? Untick anything already in the cupboard.</p>
+                    </div>
+                    <div class="week-shot">
+                        <img src="assets/screens/07-add-to-groceries.jpg" alt="Add to Groceries sheet with ingredients ticked" loading="lazy" width="660" height="1434">
+                    </div>
+                </li>
+                <li class="week-beat">
+                    <span class="week-day">Thu</span>
+                    <div class="week-copy">
+                        <h3>Cook in cooking mode</h3>
+                        <p>Big, clear steps and timers keep you on track while your hands are busy.</p>
+                    </div>
+                    <div class="week-shot">
+                        <img src="assets/screens/06-cooking-mode.jpg" alt="Cooking mode with ingredients to gather" loading="lazy" width="660" height="1434">
+                    </div>
+                </li>
+                <li class="week-beat">
+                    <span class="week-day">Fri</span>
+                    <div class="week-copy">
+                        <h3>Tap “Made it”</h3>
+                        <p>Rate it, add a photo and watch your cook count, streak and badges grow.</p>
+                    </div>
+                    <div class="week-shot">
+                        <img src="assets/screens/02-recipe.jpg" alt="Recipe screen with the Made it button" loading="lazy" width="660" height="1434">
+                    </div>
+                </li>
+                <li class="week-beat">
+                    <span class="week-day">Sat</span>
+                    <div class="week-copy">
+                        <h3>Find something new</h3>
+                        <p>Search the web for tomorrow’s idea and save the one that catches your eye.</p>
+                    </div>
+                    <div class="week-shot">
+                        <img src="assets/screens/13-web-search.jpg" alt="Search the web screen ready for a dish name" loading="lazy" width="660" height="1434">
+                    </div>
+                </li>
+            </ol>
+
+            <aside class="rotd" data-rotd data-src="assets/recipes-of-the-day.json" aria-labelledby="rotdHeading">
+                <span class="rotd-badge" id="rotdHeading">Recipe of the day</span>
+                <p class="rotd-name" data-rotd-name>Hotteok (Korean Sweet Pancakes)</p>
+                <p class="rotd-meta">
+                    <span>⏱️ <span data-rotd-time>35 min</span></span>
+                    <span>🌍 <span data-rotd-kind>Korean</span></span>
+                    <span>🧺 <span data-rotd-count>12 ingredients</span></span>
+                </p>
+                <p class="rotd-note">One of the recipes ready in the app from day one — a new one here every day.</p>
+            </aside>
         </section>
 
         <!-- Feature tour: all panels show without JS; recipefinder-site.js turns them into tabs -->
@@ -367,6 +455,6 @@
         </div>
     </div>
 
-    <script src="recipefinder-site.js?v=0.5"></script>
+    <script src="recipefinder-site.js?v=0.8"></script>
 </body>
 </html>

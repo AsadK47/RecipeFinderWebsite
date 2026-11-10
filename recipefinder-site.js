@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCookieConsent();
     initSmoothScroll();
     initFeatureTour();
+    initRecipeOfTheDay();
 });
 
 // ============================================
@@ -258,7 +259,7 @@ function initScrollAnimations() {
     // Progressive enhancement: content is visible by default (no JS, no
     // IntersectionObserver, or reduced motion). Only when we can animate do
     // we opt in via .reveal-ready, and anything already on screen shows at once.
-    const targets = document.querySelectorAll('.feature, .step, .notify-section');
+    const targets = document.querySelectorAll('.feature, .step, .week-beat, .notify-section');
     if (!targets.length || !('IntersectionObserver' in window)) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
@@ -533,9 +534,49 @@ function initFeatureTour(root = document) {
 }
 
 // ============================================
+// Recipe of the day
+// ============================================
+
+// Same recipe all day (local date), next one tomorrow.
+function dayNumber(date) {
+    return Math.floor(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 86400000);
+}
+
+function recipeOfTheDay(list, date) {
+    if (!Array.isArray(list) || list.length === 0) return null;
+    const n = list.length;
+    return list[((dayNumber(date) % n) + n) % n];
+}
+
+function formatMinutes(total) {
+    if (!(total > 0)) return '';
+    const h = Math.floor(total / 60), m = total % 60;
+    if (h === 0) return `${m} min`;
+    return m === 0 ? `${h} hr` : `${h} hr ${m} min`;
+}
+
+function renderRecipeOfTheDay(el, recipe) {
+    if (!el || !recipe) return;
+    el.querySelector('[data-rotd-name]').textContent = recipe.name;
+    el.querySelector('[data-rotd-time]').textContent = formatMinutes(recipe.minutes);
+    el.querySelector('[data-rotd-kind]').textContent = recipe.cuisine || recipe.category || '';
+    el.querySelector('[data-rotd-count]').textContent = `${recipe.ingredients} ingredients`;
+}
+
+function initRecipeOfTheDay(root = document, fetchFn = (typeof fetch === 'function' ? fetch : null), now = new Date()) {
+    const el = root.querySelector('[data-rotd]');
+    if (!el || !fetchFn) return Promise.resolve();
+    return fetchFn(el.dataset.src)
+        .then(r => (r.ok ? r.json() : null))
+        .then(list => renderRecipeOfTheDay(el, recipeOfTheDay(list, now)))
+        .catch(() => {}); // the built-in recipe stays
+}
+
+// ============================================
 // Test Exports (no-op in browser)
 // ============================================
 
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { validateEmail, initNotifyForm, initCookieConsent, initThemeToggle, nextTabIndex, initFeatureTour };
+    module.exports = { validateEmail, initNotifyForm, initCookieConsent, initThemeToggle, nextTabIndex, initFeatureTour,
+        dayNumber, recipeOfTheDay, formatMinutes, initRecipeOfTheDay };
 }
