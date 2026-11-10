@@ -14,7 +14,7 @@ A beautiful, modern landing page for the RecipeFinder iOS app. Clean design, smo
 - 📧 **Email signup** for launch notifications
 - 🍪 **Cookie consent** with Accept/Reject options (GDPR-ready)
 - ⚖️ **Legal pages** - Privacy, Terms and Cookies
-- ⚡ **Lightning fast** - no frameworks, pure HTML/CSS/JS
+- ⚡ **Lightning fast** - plain HTML, CSS and JS
 - 🌓 **Light/Dark themes** with smooth transitions
 
 ---
@@ -40,7 +40,7 @@ A beautiful, modern landing page for the RecipeFinder iOS app. Clean design, smo
 
 **Local Testing:**
 ```bash
-# Just open it!
+# Open it in a browser
 open index.html
 ```
 
@@ -76,10 +76,7 @@ Edit the CSS variables in `styles.css`:
 The site uses **minimal cookies**:
 - **Preferences:** Theme choice (light/dark mode)
 
-Users can reject all cookies. When rejected:
-- Theme toggle still works (just doesn't persist)
-- No localStorage writes
-- No tracking
+Visitors choose Accept or Reject. With Reject, the theme toggle works for the current visit and nothing is stored.
 
 ---
 

@@ -1530,9 +1530,9 @@ body {
 /* Pitch: other apps' limit first, so "unlimited, free" reads as generous */
 .pitch-compare {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
-    max-width: 560px;
+    max-width: 720px;
     margin: 8px auto 24px;
 }
 .pitch-compare > div {
@@ -1542,10 +1542,6 @@ body {
     padding: 14px 16px;
     border-radius: 16px;
     text-align: left;
-}
-.pitch-other {
-    background: rgba(255, 255, 255, 0.08);
-    opacity: 0.75;
 }
 .pitch-ours {
     background: rgba(255, 255, 255, 0.22);
