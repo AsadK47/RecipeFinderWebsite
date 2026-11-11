@@ -29,7 +29,7 @@ function setupNotifyDOM() {
             <input type="hidden" name="message"    id="messageInput">
             <input type="email"  name="email"      id="emailInput"  placeholder="Enter your email" required>
             <input type="hidden" name="replyto"    id="replytoInput">
-            <button type="submit">Notify Me</button>
+            <button type="submit">Notify me</button>
         </form>
         <p class="form-message" id="formMessage"></p>
     `;

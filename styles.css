@@ -1448,7 +1448,8 @@ body {
         gap: 12px;
     }
     
-    .btn-accept {
+    .btn-accept,
+    .btn-reject {
         width: 100%;
     }
     
@@ -2259,17 +2260,6 @@ body {
     margin-top: 28px;
 }
 
-.wn-cta a {
-    display: inline-block;
-    padding: 12px 22px;
-    border-radius: 999px;
-    background: var(--bg-card);
-    color: var(--text-primary);
-    font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 6px 18px var(--shadow);
-}
-
 /* ============================================
    App look (RecipeFinder/DesignSystem.md): frosted translucent cards
    over the theme gradient, 0.5px hairlines, capsule buttons, tinted
@@ -2493,7 +2483,6 @@ body {
 }
 
 .notify-form button,
-.wn-cta a,
 .beta-cta {
     border-radius: 999px;
     background: var(--accent-fill);
