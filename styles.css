@@ -1630,7 +1630,8 @@ body {
    ============================================ */
 
 .faq-section {
-    padding: 0 0 clamp(40px, 8vh, 80px);
+    /* Next section (notify) adds its own top padding; keep the gap in line with the ~70px rhythm. */
+    padding: 0 0 clamp(24px, 4vh, 40px);
 }
 
 .faq-list {
@@ -2672,8 +2673,9 @@ h3 {
 
 .legal-page {
     max-width: 800px;
-    margin: 100px auto 50px;
-    padding: 40px 20px;
+    /* The fixed banner is ~52px tall; clear it with a normal section gap, not a dead band. */
+    margin: 56px auto 50px;
+    padding: 16px 20px 40px;
 }
 
 .legal-page .back-link {
