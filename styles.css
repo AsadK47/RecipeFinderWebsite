@@ -2511,7 +2511,8 @@ body {
 }
 
 .notify-form button,
-.wn-cta a {
+.wn-cta a,
+.beta-cta {
     border-radius: 999px;
     background: var(--accent-fill);
     color: #ffffff;
@@ -2581,5 +2582,57 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .faq-item summary::before {
         transition: none;
+    }
+}
+
+/* TestFlight public beta CTA (PrimaryButton look above) */
+.beta-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    font-size: 1.05rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.beta-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(15, 118, 110, 0.45);
+}
+
+.beta-cta:focus-visible {
+    outline: 3px solid var(--badge-tint);
+    outline-offset: 3px;
+}
+
+.beta-cta-icon svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.beta-note {
+    flex-basis: 100%;
+    margin: 4px 0 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.beta-note a {
+    color: inherit;
+}
+
+/* Dark themes: the teal fill sits close to the dark gradient, so give the button a hairline edge and lift. */
+:root[data-theme="dark"] .beta-cta {
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45), 0 0 0 4px rgba(94, 234, 212, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .beta-cta {
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45), 0 0 0 4px rgba(94, 234, 212, 0.12);
     }
 }
