@@ -2636,3 +2636,9 @@ body {
         box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45), 0 0 0 4px rgba(94, 234, 212, 0.12);
     }
 }
+
+/* Breathing room between a CTA button and the "Or get an email…" line under it (gallery + what's-new). */
+.notify-section .beta-note,
+.wn-cta + .beta-note {
+    margin-top: 20px;
+}
