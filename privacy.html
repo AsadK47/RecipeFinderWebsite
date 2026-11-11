@@ -3,76 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Immediate Theme Script (prevents flash) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     <title>Privacy Policy - RecipeFinder</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .legal-page {
-            max-width: 800px;
-            margin: 100px auto 50px;
-            padding: 40px 20px;
-        }
-        .legal-page h1 {
-            color: var(--text-primary);
-            margin-bottom: 10px;
-        }
-        .legal-page .last-updated {
-            color: var(--text-secondary);
-            margin-bottom: 30px;
-        }
-        .legal-page h2 {
-            color: var(--text-primary);
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
-        .legal-page p, .legal-page li {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 15px;
-        }
-        .legal-page ul {
-            margin-left: 20px;
-        }
-        .highlight-box {
-            background: var(--bg-card);
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 8px;
-        }
-        .highlight-box a {
-            color: var(--text-primary);
-            text-decoration: underline;
-            font-weight: 500;
-        }
-        .highlight-box a:hover {
-            opacity: 0.7;
-        }
-        .back-link {
-            display: inline-block;
-            color: var(--text-primary);
-            text-decoration: underline;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-        .back-link:hover {
-            opacity: 0.7;
-        }
-    </style>
+    <link rel="icon" type="image/png" href="assets/app-icon-256.png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#14B8A6">
+    <link rel="stylesheet" href="styles.css?v=1.4">
 </head>
 <body>
+    <!-- What's new banner: edit the one line inside .banner-text -->
     <div class="coming-soon-banner">
         <div class="banner-content">
-            <span class="banner-text">Discover your inner chef 🌟</span>
+            <a class="banner-text banner-link" href="whats-new.html"><span class="banner-new">New</span> Import from PDFs and other apps</a>
         </div>
-        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+        <button id="themeToggle" class="theme-toggle icon-toggle" aria-label="Toggle theme">
             <span class="theme-icon">🌙</span>
         </button>
     </div>
 
     <div class="legal-page">
-        <a href="index.html" class="back-link">← Back to Home</a>
+        <a href="index.html" class="gallery-link back-link">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            <span>Back to home</span>
+        </a>
         
         <h1>Privacy Policy</h1>
-        <p class="last-updated">Last Updated: November 10, 2026</p>
+        <p class="last-updated">Last updated: 10 November 2026</p>
 
         <h2>1. Introduction</h2>
         <p>RecipeFinder, operated by Asad Khan, is committed to protecting your privacy. This policy explains how we handle your information when you use our website and mobile application.</p>
@@ -107,11 +73,51 @@
         <p>For privacy concerns or data requests: <a href="mailto:recipefinderuk@gmail.com">recipefinderuk@gmail.com</a></p>
     </div>
 
+    <!-- Footer -->
     <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>RecipeFinder™</h3>
+                <p>Your personal culinary companion</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Product</h3>
+                <ul>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="gallery.html">App Gallery</a></li>
+                    <li><a href="index.html#how-it-works">How it works</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
+                    <li><a href="https://testflight.apple.com/join/UJWrMbk2" target="_blank" rel="noopener" data-beta-link>Join the beta</a></li>
+                    <li><a href="index.html#notify">Get notified</a></li>
+                    <li><a href="whats-new.html">What’s new</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="cookies.html">Cookie Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="mailto:recipefinderuk@gmail.com">Email</a></li>
+                    <li><a href="mailto:recipefinderuk@gmail.com?subject=Business%20enquiry">Business enquiries</a></li>
+                </ul>
+            </div>
+        </div>
+
         <div class="footer-bottom">
             <p>&copy; 2024-2026 Asad Khan. All rights reserved.</p>
+            <p class="legal-jurisdictions">Subject to UK and US law. Governed by laws of England and Wales.</p>
+            <p class="website-info"><a href="https://recipefinder.uk">recipefinder.uk</a> · <a href="mailto:recipefinderuk@gmail.com">recipefinderuk@gmail.com</a></p>
         </div>
     </footer>
-    <script src="recipefinder-site.js?v=0.4"></script>
+    <script src="recipefinder-site.js?v=1.0"></script>
 </body>
 </html>

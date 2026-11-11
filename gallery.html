@@ -31,19 +31,23 @@
     <meta property="og:image" content="https://recipefinder.uk/assets/og-image.png">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/app-icon.png">
-    <link rel="apple-touch-icon" href="assets/app-icon.png">
+    <link rel="icon" type="image/png" href="assets/app-icon-256.png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
     <meta name="theme-color" content="#14B8A6">
     
-    <link rel="stylesheet" href="styles.css?v=0.6">
+    <link rel="stylesheet" href="styles.css?v=1.4">
 </head>
 <body>
-    <!-- Coming Soon Banner -->
+    <!-- Icons (SF Symbols-style line icons), used as <svg><use href="#i-…"/></svg> -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="i-iphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.8"/><path d="M10.5 5h3"/></symbol>
+    </svg>
+    <!-- What's new banner: edit the one line inside .banner-text -->
     <div class="coming-soon-banner">
         <div class="banner-content">
-            <span class="banner-text">Discover your inner chef 🌟</span>
+            <a class="banner-text banner-link" href="whats-new.html"><span class="banner-new">New</span> Import from PDFs and other apps</a>
         </div>
-        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+        <button id="themeToggle" class="theme-toggle icon-toggle" aria-label="Toggle theme">
             <span class="theme-icon">🌙</span>
         </button>
     </div>
@@ -53,33 +57,34 @@
         <!-- Gallery Hero -->
         <section class="gallery-hero">
             <h1>App Gallery</h1>
-            <p>Experience RecipeFinder's beautiful interface designed to make cooking a joy</p>
-            <a href="index.html" class="back-button">
-                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <p>Experience RecipeFinder’s beautiful interface designed to make cooking a joy</p>
+            <a href="index.html" class="gallery-link back-link">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M19 12H5M12 19l-7-7 7-7"/>
                 </svg>
-                Back to Home
+                <span>Back to home</span>
             </a>
         </section>
 
         <!-- Gallery Grid -->
+        <h2 class="sr-only">App screens</h2>
         <section class="gallery-grid">
             <div class="gallery-item">
                 <div class="iphone-container">
                     <div class="iphone-frame">
                         <div class="iphone-screen">
-                            <img src="assets/screens/01-recipes.jpg" alt="RecipeFinder: Your library" loading="lazy" width="660" height="1434">
+                            <img src="assets/screens/01-recipes.webp" alt="RecipeFinder: Your library" loading="lazy" width="660" height="1434">
                         </div>
                     </div>
                 </div>
                 <h3>Your library</h3>
-                <p>Every recipe you've saved, searchable in a tap</p>
+                <p>Every recipe you’ve saved, searchable in a tap</p>
             </div>
             <div class="gallery-item">
                 <div class="iphone-container">
                     <div class="iphone-frame">
                         <div class="iphone-screen">
-                            <img src="assets/screens/02-recipe.jpg" alt="RecipeFinder: Recipe" loading="lazy" width="660" height="1434">
+                            <img src="assets/screens/02-recipe.webp" alt="RecipeFinder: Recipe" loading="lazy" width="660" height="1434">
                         </div>
                     </div>
                 </div>
@@ -157,43 +162,45 @@
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>RecipeFinder™</h4>
+                    <h3>RecipeFinder™</h3>
                     <p>Your personal culinary companion</p>
                 </div>
-                
+
                 <div class="footer-section">
-                    <h4>Product</h4>
+                    <h3>Product</h3>
                     <ul>
                         <li><a href="index.html#features">Features</a></li>
                         <li><a href="gallery.html">App Gallery</a></li>
                         <li><a href="index.html#how-it-works">How it works</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
                         <li><a href="https://testflight.apple.com/join/UJWrMbk2" target="_blank" rel="noopener" data-beta-link>Join the beta</a></li>
-                        <li><a href="index.html#notify">Get Notified</a></li>
+                        <li><a href="index.html#notify">Get notified</a></li>
+                        <li><a href="whats-new.html">What’s new</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
-                    <h4>Legal</h4>
+                    <h3>Legal</h3>
                     <ul>
                         <li><a href="privacy.html">Privacy Policy</a></li>
                         <li><a href="terms.html">Terms of Service</a></li>
                         <li><a href="cookies.html">Cookie Policy</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-section">
-                    <h4>Contact</h4>
+                    <h3>Contact</h3>
                     <ul>
                         <li><a href="mailto:recipefinderuk@gmail.com">Email</a></li>
-                        <li><a href="mailto:recipefinderuk@gmail.com?subject=Business%20enquiry">Business Enquiries</a></li>
+                        <li><a href="mailto:recipefinderuk@gmail.com?subject=Business%20enquiry">Business enquiries</a></li>
                     </ul>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p>&copy; 2024-2026 Asad Khan. All rights reserved.</p>
                 <p class="legal-jurisdictions">Subject to UK and US law. Governed by laws of England and Wales.</p>
-                <p class="website-info"><a href="https://recipefinder.uk">recipefinder.uk</a> | Business Enquiries: <a href="mailto:recipefinderuk@gmail.com">recipefinderuk@gmail.com</a></p>
+                <p class="website-info"><a href="https://recipefinder.uk">recipefinder.uk</a> · <a href="mailto:recipefinderuk@gmail.com">recipefinderuk@gmail.com</a></p>
             </div>
         </footer>
     </div>
@@ -201,15 +208,15 @@
     <!-- Cookie Consent Banner -->
     <div id="cookieConsent" class="cookie-consent hidden">
         <div class="cookie-content">
-            <p>🍪 We use cookies to remember your preferences. Choose your preference below.</p>
+            <p>We use cookies to remember your preferences. Choose your preference below.</p>
             <div class="cookie-buttons">
                 <button id="acceptCookies" class="btn-accept">Accept</button>
                 <button id="rejectCookies" class="btn-reject">Reject</button>
-                <a href="cookies.html">Learn More</a>
+                <a href="cookies.html">About cookies</a>
             </div>
         </div>
     </div>
 
-    <script src="recipefinder-site.js?v=0.4"></script>
+    <script src="recipefinder-site.js?v=1.0"></script>
 </body>
 </html>
