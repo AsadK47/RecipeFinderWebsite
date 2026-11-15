@@ -98,4 +98,4 @@ Visitors choose Accept or Reject. With Reject, the theme toggle works for the cu
 
 ---
 
-© 2024-2026 Asad Khan. All rights reserved.
+© 2024-2026 Asad Khan. App source code: [AGPL-3.0](https://github.com/AsadK47/RecipeFinder).
