@@ -1140,6 +1140,17 @@ body {
     font-weight: 500;
 }
 
+.form-note {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-top: 8px;
+}
+
+.form-note a {
+    color: inherit;
+    text-decoration: underline;
+}
+
 /* ============================================
    Footer
    ============================================ */
