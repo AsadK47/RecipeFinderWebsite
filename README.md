@@ -73,10 +73,11 @@ Edit the CSS variables in `styles.css`:
 
 ## 🍪 Cookie Compliance
 
-The site uses **minimal cookies**:
-- **Preferences:** Theme choice (light/dark mode)
+The site's own pages set **no cookies**. They keep two preferences in the browser's local storage (see `cookies.html`):
+- **Theme:** light or dark, saved once the visitor accepts
+- **Banner choice:** `cookieConsent` (`accepted` or `rejected`), so the banner isn't shown again
 
-Visitors choose Accept or Reject. With Reject, the theme toggle works for the current visit and nothing is stored.
+With Reject, the saved theme is cleared and the theme toggle works on the current page without saving it; the Reject choice itself is remembered.
 
 ---
 
